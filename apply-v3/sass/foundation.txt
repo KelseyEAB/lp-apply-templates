@@ -1,0 +1,6 @@
+(1) Look here for the foundation starter files:
+
+Web Resources-->Coding Resources-->SASS-->Sass Starter Files-->foundation
+
+
+(2) Add the "foundation" folder to your project inside the main "sass" folder.

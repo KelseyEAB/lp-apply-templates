@@ -1,0 +1,164 @@
+// ================
+// Buttons
+// ================
+
+@mixin buttonColor($_c-buttonColor, $_c-buttonHoverColor: "auto", $_c-iconColor: "inherit") {
+  background-color: $_c-buttonColor;
+
+  &:hover,
+  &:focus {
+    @if $_c-buttonHoverColor != "auto" {
+      background-color: $_c-buttonHoverColor;
+    }
+
+    @elseif brightness($_c-buttonColor) > 70% {
+      background-color: lighten($_c-buttonColor, 10%);
+    } @else {
+      background-color: darken($_c-buttonColor, 10%);
+    }
+  }
+
+  &::before,
+  &::after {
+    color: $_c-iconColor;
+  }
+
+  @if brightness($_c-buttonColor) > 70% {
+    color: $c-black;
+  } @else {
+    color: $c-white;
+  }
+}
+
+// ================
+// Button Placeholders
+
+// Base Button Styles
+%button {
+
+  //handles button color and hover
+  @include buttonHover;
+  color:white;
+  display: block;
+  width: 100%;
+  padding: .75em 1.25em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+  appearance: none;
+  -webkit-appearance: none;
+  position:relative;
+  overflow:hidden;
+  font-weight:600;
+  font-family: $f-bodyFont;
+
+  &,
+  &::before,
+  &::after {
+    transition: all 0.5s ease-in-out;
+  }
+
+  &:hover,
+  &:focus {
+
+  }
+
+  @media (min-width: $mq-600) {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+// Major Buttons
+%major-button {
+  @include fluidRem(font-size, 1.125rem, 1.25rem);
+  text-transform:uppercase;
+  font-weight:800;
+
+  //handles button color and hover
+  @include buttonHover ($c_buttonColor: $c-blue, $c_buttonHoverColor: $c-yellow, $c_fontColor: white, $c_fontColorHover: $c-darkBlue)
+
+  &:hover, 
+  &:focus{
+
+  }
+}
+
+// Minor Buttons
+%minor-button {
+  color:white;
+  background: $c-darkBlue;
+  display: block;
+  width: 100%;
+  padding: .5em 1em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid $c-darkBlue;
+  border-radius: 0;
+  outline: 0;
+  font-size: 1rem;
+  line-height: 1.2;
+  appearance: none;
+  -webkit-appearance: none;
+  position:relative;
+  overflow:hidden;
+  font-weight:800;
+
+  &:hover, 
+  &:focus{
+    color: $c-blue;
+    background:transparent;
+    border:2px solid $c-blue;
+  }
+
+  @media (min-width: $mq-600) {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+@mixin reversed-button{
+
+  &:hover, &:focus{
+
+  }
+}
+
+// ================
+// Application of Placeholders
+
+// Default Button Selectors
+button,
+.type_event_button a,
+[type=submit],
+[type=button] {
+  @extend %button;
+}
+
+
+// Reusable Button Classes
+// Add these classes to any element to style it like a button
+button,
+a,
+input {
+  &.button,
+  .button & {
+    @extend %button !optional;
+  }
+
+  &.major-button,
+  .major-button & {
+    @extend %major-button !optional;
+  }
+
+  &.minor-button,
+  .minor-button & {
+    @extend %minor-button !optional;
+  }
+}

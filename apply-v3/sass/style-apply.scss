@@ -1,0 +1,99 @@
+@import "foundation/index",
+				"acs",
+				"shared";
+
+
+// ================
+// Apply Landing Page Styles
+// ================
+
+
+// ================
+// Section 1
+
+.lp-apply{
+	@include applyFormInlineEmail("(min-width: #{$mq-500})");
+	
+	&:before{
+		height:30vw;
+		width:100%;
+		content:'';
+		background: url("img-apply-sm.jpg") no-repeat center 15% /cover;
+		min-height:10rem;
+		display:block;
+	}
+
+	.lp-apply-content{
+		max-width: $mq-800;
+		margin-top:-3rem;
+	}
+
+	h2{	
+		position:relative;
+		@include calloutHeadline;
+		@include dashedTriangle;
+		display:block;
+		padding: 1rem;
+		margin-bottom:2rem;
+	}
+
+	@media (min-width: $mq-1000){
+		&:before{
+			background: url("img-apply-lg.jpg") no-repeat center /cover;
+		}
+
+		.lp-apply-content{
+			margin-top:-4rem;
+		}
+			
+		h2{
+			padding:1rem 2rem;
+		}
+	}
+
+}
+
+.lp-deferral{
+	@include section;
+	// @include section($_spacingType: padding, $_padding-top: $d-lSectPadding, $_padding-bottom: 0)
+	position:relative;
+
+	.lp-deferral-initial,
+	.lp-form-thanks{
+		max-width: $mq-700;
+		margin:auto;
+		position:relative;
+		z-index:10;
+		@include container;
+		background:white;
+		box-shadow: $s-containerBoxShadow;
+		min-height:16rem;
+	}
+
+	.lp-form-thanks{
+		max-width: $mq-600;
+		display:flex;
+		flex-direction:column;
+		justify-content:center;
+	}
+
+	h3{
+		@include squiggleBorder;
+	}
+
+		&:before{
+		content:'';
+		width:100%;
+		height:50%;
+		top:50%;
+		transform: translate(0, -50%);
+		position:absolute;
+		background: $c-darkBlue;
+		background: url('img-background-school.jpg') no-repeat right center /cover;
+		z-index:-1;
+	}
+}
+
+.lp-school-contact{
+	padding-top:0;
+}

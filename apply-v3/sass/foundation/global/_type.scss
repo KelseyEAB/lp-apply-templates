@@ -1,0 +1,161 @@
+// ================
+// Typography
+// ================
+
+
+// ================================================================================================
+// Universal Elements
+
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+// ================================================================================================
+// Root
+
+html {
+  line-height: 1.4;
+  font-family: $f-bodyFont;
+  color:$c-textGrey;
+}
+
+body {
+  @include fluidRem("font-size", rem(15), rem(18), $mq-600);
+}
+
+// ================================================================================================
+// Headlines
+
+h1, %h1,
+h2, %h2,
+h3, %h3,
+h4, %h4,
+h5, %h5,
+h6, %h6 {
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  font-family: $f-headlineFont;
+  color: $c-textGrey;
+}
+
+h1, %h1,
+h2, %h2 {
+  @include fluidRem("font-size", 1.75rem, 2.25rem);
+  font-weight:800;
+}
+
+h3, %h3 {
+  @include fluidRem("font-size", 1.5rem, 2rem);
+  font-weight:500;
+}
+
+h4, %h4 {
+  @include fluidRem("font-size", 1.25rem, 1.5rem);
+  font-weight:500;
+}
+
+h5, %h5 {
+  @include fluidRem("font-size", 1.125rem, 1.25rem);
+  font-weight:500;
+}
+
+h6, %h6 {
+  @include fluidRem("font-size", 1rem, 1.15rem);
+  font-weight:500;
+}
+
+@mixin calloutHeadline {
+  padding:1rem;
+  background:white;
+  box-shadow: $s-containerBoxShadow;
+  display:inline-block;
+}
+
+
+// ================================================================================================
+// Body Copy
+
+p,
+ul,
+ol,
+blockquote,
+address {
+  margin: 0 0 1rem 0;
+  font-style: normal;
+}
+
+ul,
+ol {
+  padding: 0;
+
+  li {
+    list-style: none;
+  }
+}
+
+hr{
+  margin:1rem 0;
+  border:0;
+  border-top:2px solid $c-grey;
+}
+
+a {
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  text-decoration: underline;
+  color: $c-blue;
+  
+  &:hover{
+    text-decoration:none;
+    color: $c-darkBlue;
+  }
+
+  &:focus{
+    background: $c-yellow;
+    text-decoration:none;
+  }
+}
+
+%darker-link{
+  // color:$c-brown;
+
+  &:hover,
+  &:focus {
+    // color: darken($c-brown, 10%);
+  }
+}
+
+@mixin reversed-link{
+  color:white;
+
+  &:hover,
+  &:focus {
+    color: $c-yellow;
+  }
+
+  &:focus{
+    color: $c-darkBlue;
+    background: $c-yellow;
+  }
+}
+
+%small,
+small,
+.copyright {
+  font-style: italic;
+  font-size: .875em;
+}
+
+
+// ================================================================================================
+// Other Type Styles
+
+.error,
+.val-header {
+  color: $c-error;
+}

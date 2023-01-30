@@ -1,0 +1,111 @@
+// ================
+// Settings
+// ================
+
+// ================
+// Fonts
+
+// @include fontFace("file name", "font family", normal/bold, normal/italic);
+// @include fontFace("icomoon", "icons", normal);
+@include fontFace("icomoon", "icons", normal);
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,500;1,700&display=swap');
+
+// ================
+// Variables
+
+// Font Stacks
+$f-headlineFont: 'Montserrat', sans-serif;
+$f-bodyFont: 'Montserrat', sans-serif;
+$f-iconFont: "icons";
+
+
+// Standard Colors
+
+// School colors
+// Primary
+$c-darkBlue:#0C233F;
+$c-yellow: #FFC62F;
+
+// Secondary
+$c-blue:#0070B9;
+$c-lightBlue: #a3c8e3;
+
+$c-green:#4c732a;
+$c-tan: #ad9d6e;
+
+$c-lightGrey:#eeeeee;
+$c-grey:#bbbbbb;
+$c-medGrey:#707070;
+$c-textGrey:#0C233F;
+
+$c-lightGreyText: #737373; //lightest accessible grey on white
+
+$c-black: #000000;
+$c-white: #ffffff;
+
+$c-error: #e60004;
+$c-valid: green;
+
+// Breakpoints
+$mq-2000: 125rem;
+$mq-1900: 118.75rem;
+$mq-1800: 112.5rem;
+$mq-1700: 106.25rem;
+$mq-1600: 100rem;
+$mq-1500: 93.75rem;
+$mq-1400: 87.5rem;
+$mq-1300: 81.25rem;
+$mq-1200: 75rem;
+$mq-1100: 68.75rem;
+$mq-1000: 62.5rem;
+$mq-900: 56.25rem;
+$mq-800: 50rem;
+$mq-700: 43.75rem;
+$mq-600: 37.50rem;
+$mq-500: 31.25rem;
+$mq-400: 25rem;
+$mq-300: 18.75rem;
+
+// Spacing (*2 for large screens)
+$d-lSectPadding:4rem;
+$d-sSectPadding:1.5rem;
+
+$d-lContPadding:2rem;
+$d-sContPadding:1rem;
+
+
+// Shadows
+$s-blackTextShadow: 0 0 10px rgba(0,0,0, .5);
+$s-whiteTextShadow: 0 0 10px white;
+$s-containerBoxShadow: 0 3px 8px 0 rgba(0,0,0, .3);
+
+// Font Awesome Standard Icons
+$i-question: "\f128";
+$i-question-circle-o:"\f29c";
+$i-star: "\f005";
+$i-star-o: "\f006";
+$i-check: "\f00c";
+$i-close: "\f00d";
+$i-check-square-o: "\f046";
+$i-check-square:"\f14a";
+$i-close-circle:"\f057";
+$i-check-circle:"\f058";
+$i-close-circle-o:"\f05c";
+$i-check-circle-o:"\f05d";
+$i-info-circle:"\f05a";
+$i-info:"\f129";
+$i-arrow-circle-right:"\f0a9";
+$i-caret-right:"\f0da";
+$i-angle-right:"\f105";
+$i-chevron-right-circle:"\f138";
+$i-chevron-circle-down:"\f13a";
+$i-chevron-right:"\f054";
+$i-email-o: "\f003";
+$i-email:"\f0e0";
+$i-email-square:"\f199";
+$i-mobile-phone:"\f10b";
+$i-phone: "\f095";
+$i-phone-square: "\f098";
+$i-arrow-right: "\e900";
+
