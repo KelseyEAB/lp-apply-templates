@@ -1,0 +1,268 @@
+// ================
+// Styles used by all ACS landing pages
+// ================
+
+// ================
+// Navigation
+
+.lp-header-nav-wrap {
+	background: $c-white;
+	position: relative;
+	box-shadow: 0 0 30px -10px rgba($c-black, .2);
+	@include fluidRem("padding", 1rem 0, 1.5rem 0);
+	box-shadow: 0 0 15px rgba($c-black, .2);
+
+	.main-nav {
+		margin: 1.5rem 0 1rem;
+
+		ul, li {
+			margin: 0;
+			padding: 0;
+		}
+
+		ul {
+			list-style: none;
+			display:flex;
+		}
+
+		li {
+			position: relative;
+
+			~ li {
+				margin-left: 1rem;
+			}
+		}
+
+		a {
+			@include fluidRem("font-size", 0.8125rem, 1.0625rem);
+			@include fluidRem("padding", 0.75rem 0, 1rem 0.5rem);
+			color:$c-green;
+			width: 100%;
+			height: 100%;
+			font-weight: normal;
+			align-items: center;
+			text-align: center;
+			text-decoration: none;
+			line-height: 1.2;
+			position: relative;
+
+			&::after {
+				content: "";
+				position: absolute;
+				width: 50px;
+				height: 3px;
+				bottom: 0;
+				left: calc(50% - 25px);
+				background: #FDB724;
+				visibility: hidden;
+				-webkit-transform: scaleX(0);
+				transform: scaleX(0);
+				transition: all .15s ease-in;
+				z-index: 1;
+			}
+			
+			&:hover,
+			&:focus,
+			&.active {
+				&::after {
+					visibility: visible;
+					-webkit-transform: scaleX(1);
+					transform: scaleX(1);
+					transition: all .25s ease-out;
+				}
+			}
+
+			&.active {
+				transition: none;
+				color: $c-black;
+				font-weight: bold;
+			}
+		}
+	}
+	
+	@media (min-width: $mq-600) {
+		display: flex;
+		align-items: center;
+
+		.main-nav {
+			padding-right: 3%;
+			margin: 0 0 0 auto;
+		}
+
+		.school-header {
+			padding-left: 3%;
+		}
+
+		.main-nav,
+		.school-header {
+			>.center {
+				max-width: none;
+				width: 100%;
+			}
+		}
+	}
+}
+
+
+// ================
+// Apply CTA
+
+.lp-apply,
+.lp-apply-btm {
+	@include applyFormInlineEmail("(min-width: #{$mq-500})");
+
+	.apply-form {
+		position: relative;
+		margin: 1.5rem 0 0;
+		padding: 0 !important;
+
+		label {
+			@extend .visuallyhidden;
+		}
+
+		.mauticform-button-wrapper {
+			margin-top: 0.75rem;
+		}
+
+		a,
+		button {
+			@extend %major-button !optional;
+			width: 100%;
+			margin-bottom: 0;
+		 	white-space: nowrap;
+		}
+		
+	}
+
+}
+
+
+.lp-apply-btm {
+	padding: 9vw 0 9vw;
+
+	.lp-apply-btm-title {
+		@include headlineAccent($c-gold);
+	}
+
+	.lp-apply-btm-content {
+		padding: 13vw 0;
+		max-width: $mq-700;
+		margin: 0 auto 0 0;
+	}
+
+	@media (min-width: $mq-900) {
+		@include fullWidthGrid(".center", "left",  "img-portrait-smile.jpg", 1fr, 1.5fr, 6rem, $c-green);
+	}
+}
+
+// ================
+// Form Thanks Message
+
+.thanks-message {
+	background: $c-lightGrey;
+	padding: 1rem 1.5rem;
+	margin-top: 1.5rem;
+
+	p {
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
+
+// ================
+// School Contact Section
+.lp-school-contact {
+	padding: 20vw 0;
+	background: url("img-seal.svg") no-repeat 30% 50% / contain;
+
+	.lp-school-contact-info {
+		@include containerStyle;
+		max-width: $mq-700;
+		margin: auto;
+	}
+
+	.lp-school-contact-options {
+		margin: 0;
+		
+		li {
+			list-style-type: none;
+			display: inline-block;
+			width: auto;
+			margin-right: 0.5rem;
+					
+			~ li {
+				margin-top: 0.75rem;
+			}
+			
+			a {
+				@extend %button;
+				@extend %minor-button;
+			
+				&::before {
+					display: inline-block;
+					font-family: $f-iconFont;
+					margin-right: 0.35rem;
+					font-weight: normal;
+				}
+			}
+					
+			&.lp-school-contact-phone {
+				a {
+					&::before {
+						content: $i-phone;
+					}
+				}
+			}
+			
+			&.lp-school-contact-email {
+				a {
+					&::before {
+						content: $i-email;
+					}
+				}
+			}
+		}
+	}
+	
+	@media (min-width: calc(#{$mq-500} + 2rem)) {
+		.lp-school-contact-info {
+			@include bgBlock("left", $c-green);
+		}
+
+		.lp-school-contact-info {
+			text-align: center;
+		}
+		
+		.lp-school-contact-options {
+			display: grid;
+			grid-template-columns: auto auto;
+			justify-content: center;
+			grid-gap: 1.5rem;
+			
+			li {
+				margin-right: 0;
+				
+				~ li {
+					margin-top: 0;
+				}
+			}
+		}
+	}
+
+	@media (min-width: $mq-700) {
+		display: grid;
+		grid-template-columns: 1fr 4rem 2fr 5%;
+
+		>.center {
+			max-width: none;
+			width: 100%;
+			grid-column: 3 / 4;
+		}
+	}
+
+	@media (min-width: $mq-1400) {
+		padding: 12vw 0;
+	}
+	
+}

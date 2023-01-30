@@ -1,0 +1,140 @@
+// ================
+// Typography
+// ================
+
+
+
+// ================
+// Universal Elements
+
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: $c-green;
+  color: $c-white;
+}
+
+// ================
+// Root
+
+html {
+  line-height: 1.4;
+  font-family: $f-bodyFont;
+  color: $c-black;
+}
+
+body {
+  font-size: 1rem;
+  
+  @media (min-width: $mq-600) {
+    font-size: 1.0625rem;
+  }
+
+  @media (min-width: $mq-1200) {
+    font-size: 1.125rem;
+  }
+}
+
+
+// ================
+// Headlines
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.5rem 0 1rem;
+  font-family: $f-headlineFont;
+  font-weight: 600;
+  line-height: 1.1;
+  color: $c-green;
+}
+
+h1,
+h2 {
+  @include fluidRem("font-size", 1.85rem, 2.5rem);
+}
+
+h3 {
+  @include fluidRem("font-size", 1.65rem, 2.25rem);
+}
+
+h4 {
+  @include fluidRem("font-size", 1.35rem, 1.65rem);
+}
+
+h5 {
+  @include fluidRem("font-size", 1.15rem, 1.35rem);
+}
+
+h6 {
+  @include fluidRem("font-size", 1rem, 1.15rem);
+}
+
+
+
+// ================
+// Body Copy
+
+p,
+ul,
+ol,
+blockquote,
+address {
+  margin: 0 0 1rem 0;
+  font-style: normal;
+}
+
+ul,
+ol {
+  margin: 1rem 0 1rem 2.75rem;
+
+  li {
+  }
+}
+
+a {
+  color: $c-link;
+  font-weight: bold;
+  @extend %transition;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: darken($c-link, 20%);
+  }
+}
+
+%small,
+small,
+.copyright {
+  font-size: .875em;
+  font-style: italic;
+}
+
+
+
+// ================
+// Other Type Styles
+
+.error,
+.val-header {
+  color: $c-error;
+}
+
+.nobr {
+  white-space: nowrap;
+}
+
+.box {
+  display: block;
+  border: 2px solid $c-gold;
+  padding: 1rem;
+}

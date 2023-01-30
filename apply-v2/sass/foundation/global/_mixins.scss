@@ -1,0 +1,262 @@
+// ================
+// Custom Mixins
+// ================
+
+
+// Button Color Mixin - (used on _buttons.scss)
+// -- Update Colors with Brand Colors -- //
+@mixin buttonColor (
+  $_c-buttonColor: $c-green,
+  $_c-buttonHoverColor: $c-gold,
+  $_c-buttonTextColor: $c-white,
+  $_c-buttonTextColorHover: $c-green,
+  $_c-buttonBorderColorIntial: transparent,
+  $_c-buttonBorderColorHover: transparent) {
+
+  background: $_c-buttonColor;
+  color: $_c-buttonTextColor;
+  border: 2px solid $_c-buttonBorderColorIntial;
+
+  &:hover,
+  &:focus {
+    background: $_c-buttonHoverColor;
+    color: $_c-buttonTextColorHover;
+    border: 2px solid $_c-buttonBorderColorHover;
+  }
+}
+
+
+// Container Style Mixin
+@mixin containerStyle ($_c-backgroundColor: $c-white, $_x-border: "null", $_c-borderColor: "null", $_x-boxShadow: "yes") {
+
+	background: $_c-backgroundColor;
+	@include fluidRem("padding", 1rem 1.5rem 1.25rem, 2rem 2rem 2.25rem);
+
+  @if $_x-border == "yes" {
+    border: 3px solid $_c-borderColor;
+  }
+
+  @if $_x-boxShadow == "yes" {
+    box-shadow: 0 0 15px rgba($c-black, .2);
+  }
+}
+
+
+// Grid Items Mixin (School Content Section)
+@mixin gridItems($_x-number: "null", $_mq-small: $mq-600, $_mq-large: $mq-1000,  $_x-gridGapSmall: 1rem, $_x-gridGapLarge: 1rem) {
+  
+  @media (min-width: $_mq-small) {
+    display: grid;
+    grid-gap: $_x-gridGapSmall;
+    grid-template-columns: repeat(2, 1fr);
+    
+    @if $_x-number == "3" {
+      grid-template-rows: repeat(auto, auto);
+
+      li {
+        &:last-child {
+          grid-column: span 2;
+        }
+      }
+    } 
+    
+    @else if $_x-number == "4" {
+      grid-template-rows: repeat(2, 1fr);
+    } 
+    
+    @else if $_x-number == "5" {
+      grid-template-rows: repeat(3, 1fr);
+
+      li {
+        &:last-child {
+          grid-column: span 2;
+        }
+      }
+    } 
+    
+    @else if $_x-number == "6" {
+      grid-template-rows: repeat(3, 1fr);
+    }
+  }
+  
+
+  @media (min-width: $_mq-large) {
+    grid-gap: $_x-gridGapLarge;
+
+    @if $_x-number == "3" {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+
+      li {
+        &:last-child {
+          grid-column: auto;
+        }
+      }
+    } 
+    
+    @elseif $_x-number == "4" {
+      // grid-template-columns: repeat(4, 1fr);
+      // grid-template-rows: 1fr;
+    } 
+    
+    @else if $_x-number == "5" {
+      grid-template-columns: repeat(6, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+
+      li {
+        grid-column: span 2;
+
+        &:last-child {
+          grid-column-end: -2;
+        }
+        
+        &:nth-last-child(2) {
+          grid-column-end: 4;
+        }
+      }
+    } 
+    
+    @else if $_x-number == "6" {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+  }
+
+}
+
+
+@keyframes come-in-right {
+  0% {
+    opacity: 0;
+    transform: translate(50%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes come-in-left {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@mixin bgBlock ($_x-direction: "right", $_c-colorBottom: $c-gold, $_c-colorRight: $c-white) {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1.25rem;
+    bottom: 1.25rem;
+    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to bottom right, $_c-colorBottom, $_c-colorRight,$_c-colorBottom) 1;
+    z-index: -1;
+    max-width: calc(100vw - 2.5rem);
+
+    @if $_x-direction == "right" {
+      left: 1.25rem;
+      right: -1.25rem;
+    }
+
+    @elseif $_x-direction == "left" {
+      left: -1.25rem;
+      right: 1.25rem;
+    }
+  }
+}
+
+@mixin headlineAccent ($_c-colorStart: $c-green, $_c-colorEnd: $c-white) {
+  &::before {
+    content: "";
+    background: linear-gradient(to bottom,$_c-colorStart, $_c-colorEnd);
+    height: 4.6875rem;
+    width: 2px;
+    position: relative;
+    display: block;
+    margin-bottom: 1.25rem;
+  }
+}
+
+
+@mixin fullWidthGrid ($_x-gridClass, $_x-imgPlacement: "left", $_f-fileName, $_d-imageWidth: 1fr, $_d-contentWidth: 1.2fr, $_d-gap: 6rem, $_c-colorBottom: $c-gold, $_c-colorRight: $c-white) {
+  display: grid;
+  position: relative;
+
+  >#{$_x-gridClass} {
+    max-width: none;
+    width: 100%;
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url(#{$_f-fileName}) no-repeat center / cover;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -1.25rem;
+    bottom: 1.25rem;
+    background: transparent;
+    border-width: 2px;
+    border-style: solid;
+    z-index: -1;
+    max-width: calc(100vw - 2.5rem);
+    border-image: linear-gradient(to bottom right, $_c-colorBottom, $_c-colorRight,$_c-colorBottom) 1;
+  }
+
+  @if $_x-imgPlacement == "left" {
+    grid-template-columns: $_d-imageWidth $_d-gap $_d-contentWidth 5%;
+
+    >#{$_x-gridClass} {
+      grid-column: 3 / 4;
+    }
+
+    &::before {
+      grid-column: 1 / 2;
+    }
+  
+    &::after {
+      left: 1.25rem;
+      right: -1.25rem;
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+  }
+
+  @else if $_x-imgPlacement == "right" {
+    grid-template-columns: 5% $_d-contentWidth $_d-gap $_d-imageWidth;
+
+    >#{$_x-gridClass} {
+      grid-column: 2 / 3;
+    }
+
+    &::before {
+      grid-column: 4 / 5;
+      grid-row: 1 / 2;
+    }
+  
+    &::after {
+      left: -1.25rem;
+      right: 1.25rem;
+      grid-column: 4 / 5;
+      grid-row: 1 / 2;
+    }
+
+  }
+}

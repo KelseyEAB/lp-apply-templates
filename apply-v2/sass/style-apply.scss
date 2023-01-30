@@ -1,0 +1,72 @@
+@import "foundation/index",
+				"acs",
+				"shared";
+
+
+// ================
+// Apply Landing Page Styles
+// ================
+
+
+// ================
+// Apply
+
+.lp-apply {
+	padding: 0 0 8vw;
+	
+	&::before {
+		content: '';
+		display: block;
+		width: 100%;
+		height: 40vw;
+		background: url("img-reflection.jpg") no-repeat center / cover;
+	}
+
+	.lp-apply-wrapper {
+		position: relative;
+		z-index: 2;
+	}
+
+	.lp-apply-content {
+		@include containerStyle;
+		@include bgBlock;
+		position: relative;
+		margin-top: -2rem;
+	}
+
+	.lp-form {
+		border-top: 1px solid $c-grey;
+		padding-top: 1.5rem;
+		margin-top: 1.5rem;
+	}
+
+	@media (min-width: $mq-800) {
+		padding: 10vw 0 8vw;
+		background: url("img-reflection.jpg") no-repeat center / cover;
+
+		&::before {
+			display: none;
+		}
+
+		.lp-apply-content {
+			margin: 0 auto 0 0;
+			max-width: $mq-600;
+		}
+	}
+
+}
+
+
+
+// ================
+// Deferral
+
+.lp-deferral {
+	padding: 12vw 0 8vw;
+
+	.lp-deferral-content {
+		max-width: $mq-600;
+		margin: 0 auto;
+	}
+
+}
